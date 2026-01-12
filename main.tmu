@@ -1,0 +1,309 @@
+<TMU|<tuple|1.1.0|2025.2.3>>
+
+<style|<tuple|generic|number-europe|preview-ref|smart-ref|comment|physics>>
+
+<\body>
+  <\hide-preamble>
+    <\new-remark|idef>
+      Informal Definition
+    </new-remark>
+
+    <assign|braket|<macro|var1|var2|<around*|\<langle\>|<arg|var1>\|<arg|var2>|\<rangle\>>>>
+
+    <assign|lieso|<macro|\<frak-s\>\<frak-o\>>>
+  </hide-preamble>
+
+  <\framed>
+    <\theorem>
+      Every (real, finite dimensional) linear transformation is isomorphic to a real matrix, formally,
+
+      <\equation*>
+        \<bbb-R\><rsup|m\<times\>n>\<cong\>\<cal-L\><around*|(|\<bbb-R\><rsup|n>,\<bbb-R\><rsup|m>|)>.
+      </equation*>
+    </theorem>
+
+    <with|font-series|bold|Informal Proof.> Consider a vector <math|x\<in\>\<bbb-R\><rsup|2>>, rotate <math|x> by <math|\<theta\>> degree. We know that every vector <math|x\<in\>\<bbb-R\><rsup|2>> can be represented by\ 
+
+    <\equation*>
+      x<rsub|e>=x<rsub|1>e<rsub|1>+x<rsub|2>e<rsub|2>,
+    </equation*>
+
+    where <math|e<rsub|1>=<bmatrix|<tformat|<table|<row|<cell|1>>|<row|<cell|0>>>>>> and <math|e<rsub|2>=<bmatrix|<tformat|<table|<row|<cell|0>>|<row|<cell|1>>>>>>.
+
+    <\equation>
+      \<cal-A\>x<rsub|e>=x<rsub|1>\<cal-A\>e<rsub|1>+x<rsub|2>\<cal-A\>e<rsub|2><label|eq:lin-trans>
+    </equation>
+
+    Note that <smart-ref|eq:lin-trans> can be written as
+
+    <\equation*>
+      \<cal-A\>x<rsub|e>=<around*|[|\<cal-A\>e<rsub|1>\|\<cal-A\>e<rsub|2>|]><bmatrix|<tformat|<table|<row|<cell|x<rsub|1>>>|<row|<cell|x<rsub|2>>>>>><above|=|rep>A x<rsub|e>
+    </equation*>
+
+    <\equation*>
+      A=<matrix|<tformat|<table|<row|<cell|cos \<theta\>>|<cell|-sin\<theta\>>>|<row|<cell|sin \<theta\>>|<cell|cos \<theta\>>>>>>.
+    </equation*>
+
+    <big-figure|<with|gr-mode|<tuple|group-edit|edit-props>|gr-frame|<tuple|scale|2.52004cm|<tuple|0.5gw|0.5gh>>|gr-geometry|<tuple|geometry|1par|0.6par>|gr-grid|<tuple|empty>|gr-edit-grid-aspect|<tuple|<tuple|axes|none>|<tuple|1|none>|<tuple|10|none>>|gr-edit-grid|<tuple|empty>|gr-arrow-end|\<gtr\>|gr-line-width|2ln|magnify|2.519842099789746|gr-grid-old|<tuple|cartesian|<point|0|0>|1>|gr-edit-grid-old|<tuple|cartesian|<point|0|0>|1>|gr-auto-crop|true|<graphics||<with|line-width|2ln|arrow-end|\<gtr\>|<line|<point|0|0>|<point|1.0|0.0>>>|<with|line-width|2ln|arrow-end|\<gtr\>|<line|<point|0|0>|<point|0.0|1.0>>>|<with|color|blue|line-width|2ln|arrow-end|\<gtr\>|<line|<point|0|0>|<point|0.8000000000000002|0.5>>>|<with|color|blue|line-width|2ln|arrow-end|\<gtr\>|<line|<point|0|0>|<point|-0.6|0.6>>>|<with|color|blue|line-width|2ln|arrow-end|\<gtr\>|<std-arc-counterclockwise|<point|0.3|0.1875>|<point|0.4000000000000001|0.0>|<point|0.4800000000000001|0.3000000000000001>>>|<with|color|blue|<math-at|\<theta\>|<point|0.7|0.146333>>>|<math-at|\<cal-A\>e<rsub|1>|<point|0.951856|0.6>>|<math-at|\<cal-A\>e<rsub|2>|<point|-0.7|0.8>>>>|Geometrical interpretation of linear transformation.>
+  </framed>
+
+  <\framed>
+    Recall that a vector<nbsp><math|x><nbsp>can be defined without coordinates. The representation
+
+    <equation*|x=<around*|[|<tabular|<tformat|<cwith|1|-1|1|1|cell-halign|c>|<table|<row|<cell|<with|math-level|0|math-display|false|x<rsub|1>>>>|<row|<cell|<with|math-level|0|math-display|false|x<rsub|2>>>>>>>|]>>
+
+    depends on the choice of coordinate system. Denoting by<nbsp><math|x<rsub|e>><nbsp>the representation in the standard basis<nbsp><math|e<rsub|1>,e<rsub|2>>, we write
+
+    <\equation*>
+      x=x<rsub|1>e<rsub|1>+x<rsub|2>e<rsub|2><space|1em><above|\<Longleftrightarrow\>|rep><space|1em>x<rsub|e>=<bmatrix|<tformat|<table|<row|<cell|x<rsub|1>>>|<row|<cell|x<rsub|2>>>>>>.
+    </equation*>
+
+    For a matrix<nbsp><math|A\<in\>\<bbb-R\><rsup|2\<times\>2>>, written as<nbsp><math|A=<around*|[|<with|mode|text| >\<cal-A\>e<rsub|1>\<mid\>\<cal-A\>e<rsub|2><with|mode|text| >|]>><nbsp>where<nbsp>\<cal-A\><nbsp>is the linear map associated with<nbsp><math|A>, the vector
+
+    <equation*|x<rsub|a>=A<rsup|-1>x<rsub|e>>
+
+    gives the representation of<nbsp><math|x><nbsp>in the coordinate system whose axes are aligned with the column vectors of<nbsp><math|A>.
+  </framed>
+
+  <with|framed-color||<\framed>
+    <\theorem>
+      Given <math|A\<in\>S<rsub|n>>, where <math|S<rsub|n>> is the set of <math|n>-dimensional positive-definite matrices
+
+      <\equation*>
+        A\<cdot\>x<rsub|e><above|=|rep>Q\<Lambda\>Q<rsup|T>\<cdot\>x<rsub|e>.
+      </equation*>
+    </theorem>
+  </framed>>
+
+  <section|Determinant and trace>
+
+  <\proposition>
+    A determinant of a matrix <math|A> is the <with|font-series|bold|area> of the parallelism spanned by the transformed basis vectors.\ 
+  </proposition>
+
+  <\proof>
+    proof it!
+  </proof>
+
+  <\example>
+    <math|A=I=<matrix|<tformat|<table|<row|<cell|1>|<cell|0>>|<row|<cell|0>|<cell|1>>>>>>. <math|det<around*|(|A|)>=1>.
+  </example>
+
+  <\example>
+    <math|A=<matrix|<tformat|<table|<row|<cell|3>|<cell|4>>|<row|<cell|2>|<cell|1>>>>>>. <math|det<around*|(|A|)>=-2>
+
+    <big-figure|<with|gr-mode|<tuple|edit|cline>|gr-frame|<tuple|scale|1cm|<tuple|0.5gw|0.5gh>>|gr-geometry|<tuple|geometry|1par|0.6par>|gr-grid|<tuple|empty>|gr-edit-grid-aspect|<tuple|<tuple|axes|none>|<tuple|1|none>|<tuple|10|none>>|gr-edit-grid|<tuple|empty>|gr-color|blue|gr-arrow-end|\<gtr\>|gr-fill-color|cyan|gr-grid-old|<tuple|cartesian|<point|0|0>|1>|gr-edit-grid-old|<tuple|cartesian|<point|0|0>|1>|gr-auto-crop|true|<graphics||<with|color|blue|arrow-end|\<gtr\>|<line|<point|0|0>|<point|3.0|2.0>>>|<with|color|blue|arrow-end|\<gtr\>|<line|<point|0|0>|<point|4.0|1.0>>>|<with|color|blue|fill-color|cyan|arrow-end|\<gtr\>|<cline|<point|0|0>|<point|4.0|1.0>|<point|3.0|2.0>>>>>|Determinant follow right-hand law.>
+  </example>
+
+  <\idef>
+    The trace <math|tr<around*|(|A|)>> of a matrix <math|A> is the <with|font-series|bold|divergence> of corresponding linear transformation <math|\<cal-A\>>!
+  </idef>
+
+  <\question>
+    What is the divergence of a linear transformation.
+  </question>
+
+  <section|Vector field view of a matrix>
+
+  <\definition>
+    A vector field of <math|V> is a mapping from <math|V> to <math|V>. Intuitively, a vector field append all vectors a vector!
+  </definition>
+
+  <\example>
+    Velocity of a space can be considered as a vector field, which gives all particles in this space a velocity vector!
+  </example>
+
+  <\idef>
+    The divergence of a vector field <math|A> is defined as\ 
+
+    <\equation*>
+      div <around*|(|A;area|)>=<frac|<text|rate of area change> |area>.
+    </equation*>
+  </idef>
+
+  <big-figure|<with|gr-mode|<tuple|edit|cline>|gr-frame|<tuple|scale|1cm|<tuple|0.5gw|0.569995gh>>|gr-geometry|<tuple|geometry|1par|0.6par>|gr-grid|<tuple|empty>|gr-edit-grid-aspect|<tuple|<tuple|axes|none>|<tuple|1|none>|<tuple|10|none>>|gr-edit-grid|<tuple|empty>|gr-arrow-end|\<gtr\>|gr-fill-color|cyan|gr-opacity|20%|gr-grid-old|<tuple|cartesian|<point|0|0>|1>|gr-edit-grid-old|<tuple|cartesian|<point|0|0>|1>|gr-auto-crop|true|<graphics||<point|-1.4|1.2>|<point|-1.7|0>|<point|-1.2|-0.6>|<point|0.4|0.3>|<point|0.7|1.5>|<point|-0.7|1>|<point|0.1|0>|<with|arrow-end|\<gtr\>|<line|<point|-1.4|1.2>|<point|-1.7000000000000004|1.0>>>|<with|arrow-end|\<gtr\>|<line|<point|-1.7|0>|<point|-2.0|0.3000000000000001>>>|<with|arrow-end|\<gtr\>|<line|<point|-1.2|-0.6>|<point|-1.0|-0.2>>>|<with|arrow-end|\<gtr\>|<line|<point|-0.7|1>|<point|-0.6000000000000002|0.6>>>|<with|arrow-end|\<gtr\>|<line|<point|0.1|0>|<point|-0.5|0.1999999999999999>>>|<with|fill-color|cyan|arrow-end|\<gtr\>|opacity|20%|<cline|<point|-2.2|1.4>|<point|-2.2|-0.7>|<point|-0.10000000000000019|-0.7>>>>>|>
+
+  <\example>
+    A square matrix <math|A\<in\>\<bbb-R\><rsup|n\<times\>n>> can be considered as a vector field! <math|A> is also called <with|font-shape|italic|linear vector field>
+  </example>
+
+  <\lemma>
+    <label|lem:indepent-of-area><math|div <around*|(|A;area|)>=div <around*|(|A|)>> is independent of the choice of area!
+  </lemma>
+
+  <\proof>
+    Proof it geometrically
+  </proof>
+
+  <\theorem>
+    The trace of a linear vector field <math|A> is\ 
+
+    <\equation*>
+      tr<around*|(|A|)>=div<around*|(|A|)>.
+    </equation*>
+  </theorem>
+
+  <\proof>
+    <hlink|See Bilibili|https://www.bilibili.com/video/BV1JK4y1i7RE?spm_id_from=333.788.videopod.sections&vd_source=139db7133383a3fb17e08cd5bc65a6e3>
+  </proof>
+
+  <\folded-comment|+1oYzmf2wz7E6F6d|+1oYzmf2wz7E6F6e|comment|Jack Yansong Li|1768221281|>
+    <\proof>
+      Consider the area spanned by eigenvectors. Consider a very small amont of time <math|\<varepsilon\>>. The length of a eigenvector is <math|1>, after time <math|\<varepsilon\>>, the length is <math|1+\<varepsilon\>\<lambda\>>. The area after time <math|\<varepsilon\>> is\ 
+
+      <\equation*>
+        div<around*|(|A|)>=<frac|det<matrix|<tformat|<table|<row|<cell|1+\<varepsilon\>\<lambda\><rsub|1>>|<cell|0>>|<row|<cell|0>|<cell|1+\<varepsilon\>\<lambda\><rsub|2>>>>>>|1>=1+\<varepsilon\><around*|(|\<lambda\><rsub|1>+\<lambda\><rsub|2>|)>+<text|h.o.t>
+      </equation*>
+
+      \;
+    </proof>
+  </folded-comment>
+
+  <section|Lie group and Lie algebra>
+
+  <\framed>
+    Recall
+
+    <\equation*>
+      S<rsup|1>\<triangleq\><around*|{|x<rsub|1><rsup|2>+x<rsub|2><rsup|2>=1\|x\<in\>\<bbb-R\><rsup|2>|}>\<cong\><around*|{|e<rsup|\<mathi\>\<theta\>>\|\<theta\>\<in\><around*|[|0,2\<pi\>|]>|}>\<cong\>SO<around*|(|2|)>\<triangleq\><around*|{|R<rsup|\<top\>>R=I,det<around*|(|R|)>=1|}>
+    </equation*>
+  </framed>
+
+  <big-figure|<with|gr-mode|<tuple|edit|math-at>|gr-frame|<tuple|scale|1cm|<tuple|0.5gw|0.5gh>>|gr-geometry|<tuple|geometry|1par|0.6par>|gr-grid|<tuple|empty>|gr-edit-grid-aspect|<tuple|<tuple|axes|none>|<tuple|1|none>|<tuple|10|none>>|gr-edit-grid|<tuple|empty>|gr-arrow-end|\<gtr\>|gr-color|dark cyan|gr-grid-old|<tuple|cartesian|<point|0|0>|1>|gr-edit-grid-old|<tuple|cartesian|<point|0|0>|1>|gr-auto-crop|true|<graphics||<with|arrow-end|\<gtr\>|<line|<point|0.10000000000000019|0.0>|<point|4.3|1.4>>>|<with|arrow-end|\<gtr\>|<line|<point|-0.3|-0.4>|<point|-2.6|-2.0>>>|<with|color|blue|arrow-end|\<gtr\>|<line|<point|0.1|0>|<point|2.900000000000001|2.5>>>|<with|color|blue|arrow-end|\<gtr\>|<line|<point|-0.3|-0.4>|<point|-1.0|-2.0>>>|<with|color|dark cyan|arrow-end|\<gtr\>|<spline|<point|2.60942|0.375744>|<point|2.448290117740442|-0.9804537637253605>|<point|0.2595746791903691|-1.0341645720333377>>>|<with|color|dark cyan|<math-at|R|<point|2.68999|-1.30272>>>>>|An example of <math|det<around*|(|R|)>\<less\>0>.>
+
+  \;
+
+  <with|gr-mode|<tuple|edit|line>|gr-frame|<tuple|scale|3.17598cm|<tuple|0.5gw|0.5gh>>|gr-geometry|<tuple|geometry|1par|0.6par>|gr-grid|<tuple|cartesian|<point|0|0>|1>|gr-edit-grid-aspect|<tuple|<tuple|axes|none>|<tuple|1|none>|<tuple|10|none>>|gr-edit-grid|<tuple|cartesian|<point|0|0>|1>|magnify|3.1748021039363987|gr-arrow-end|\<gtr\>|gr-color|blue|<graphics||<point|0|0>|<with|line-width|2ln|<circle|<point|0|0>|<point|0.6000000000000002|-0.8>>>|<with|color|blue|arrow-end|\<gtr\>|<line|<point|1|0>|<point|1.0|0.7439929833018443>>>>>
+
+  <\equation*>
+    <with|color|blue|\<mathi\>=<bmatrix|<tformat|<table|<row|<cell|0>>|<row|<cell|1>>>>>>\<in\>T<rsub|e<rsub|1>>S<rsup|1>
+  </equation*>
+
+  <\itemize>
+    <item><math|\<mathi\>>: velocity
+
+    <item><math|t>: time
+  </itemize>
+
+  However <math|\<mathi\>t\<nin\>S<rsup|1>>, but <math|e<rsup|\<mathi\>t>\<in\>S<rsup|1>>!
+
+  <\enumerate>
+    <item>Start from <math|p\<in\>S<rsup|1>>. Given a velocity vector <math|v> in tangent space <math|T<rsub|p> S>.
+
+    <item>Run from <math|p> with <math|v> in time <math|t>.
+
+    <item>Using exponential mapping to map <math|v t> back to <math|S<rsup|1>>.
+  </enumerate>
+
+  <\definition>
+    The tangent space of <math|SO<around*|(|2|)>> is denoted by <math|\<frak-s\>\<frak-o\><around*|(|2|)>>.
+  </definition>
+
+  <\idef>
+    <math|Exp<rsub|x>:T<rsub|x> \<cal-M\>\<rightarrow\>\<cal-M\>>
+  </idef>
+
+  <\definition>
+    <math|SO<around*|(|2|)>> is a Lie group, <math|\<frak-s\>\<frak-o\><around*|(|2|)>> is the corresponding Lie algebra.
+  </definition>
+
+  <\question>
+    What is <math|\<frak-s\>\<frak-o\><around*|(|3|)>>?
+  </question>
+
+  <\theorem>
+    One representation of <math|\<frak-s\>\<frak-o\><around*|(|3|)>> is the set of skew-symmetric matrices!
+
+    <\equation*>
+      \<frak-s\>\<frak-o\><around*|(|3|)>=<around*|{|A=<matrix|<tformat|<table|<row|<cell|0>|<cell|-a<rsub|3>>|<cell|-a<rsub|2>>>|<row|<cell|a<rsub|3>>|<cell|0>|<cell|-a<rsub|1>>>|<row|<cell|a<rsub|2>>|<cell|a<rsub|1>>|<cell|0>>>>><mid|\|><around*|(|a<rsub|1>,a<rsub|2>,a<rsub|3>|)><rsup|\<top\>>\<in\>\<bbb-R\><rsup|3>|}>.
+    </equation*>
+  </theorem>
+
+  <\proof>
+    The most simple element of the Lie group <math|SO<around*|(|3|)>> is <math|I>. Consider an infinitesimal <math|\<varepsilon\>\<gtr\>0>, for <math|A\<in\>\<frak-s\>\<frak-o\><around*|(|3|)>>. Since we only walk a very little distance, we can imagine that <math|I+\<varepsilon\>A> is still on the manifold! Therefore,
+
+    <\equation*>
+      <around*|(|I+\<varepsilon\>A|)><rsup|\<top\>><around*|(|I+\<varepsilon\>A|)>=I.
+    </equation*>
+
+    By simple algebra
+
+    <\equation*>
+      I+\<varepsilon\><around*|(|A<rsup|\<top\>>+A|)>+<text|h.o.t>=I.
+    </equation*>
+
+    Thus,
+
+    <\equation*>
+      A<rsup|\<top\>>=-A.
+    </equation*>
+
+    <unfolded-comment|+1oYzmf2wz7E6F6f|+1oYzmf2wz7E6F6g|comment|Jack Yansong Li|1768223055||Left: Check <math|det<around*|(|I+\<varepsilon\>A|)>=1>>
+  </proof>
+
+  <\theorem>
+    For <math|<wide|w|^>\<in\>\<frak-s\>\<frak-o\><around*|(|3|)>>, we have <math|w=<around*|(|a<rsub|1>,a<rsub|2>,a<rsub|3>|)><rsup|\<top\>>\<in\>\<bbb-R\><rsup|3>>. The following equality holds
+
+    <\equation*>
+      <wide|w|^>x=w\<times\>x,<space|1em>\<forall\>x\<in\>\<bbb-R\><rsup|3>.
+    </equation*>
+  </theorem>
+
+  <\theorem>
+    Define exponential mapping <math|Exp> as
+
+    <\equation>
+      Exp<around*|(|<wide|w|^>\<theta\>|)>=e<rsup|<wide|w|^>\<theta\>>=I+<wide|w|^>\<theta\>+<frac|<around*|(|<wide|w|^>\<theta\>|)><rsup|2>|2!>+<frac|<around*|(|<wide|w|^>\<theta\>|)><rsup|3>|3!>+\<cdots\>+\<cdots\><label|eq:def-of-exp>
+    </equation>
+
+    <smart-ref|eq:def-of-exp> equals
+
+    <\equation*>
+      e<rsup|<wide|w|^>\<theta\>>=I+<wide|w|^> sin \<theta\>+<wide|w|^><rsup|2> <around*|(|1-cos \<theta\>|)>\<in\>SO<around*|(|3|)>.
+    </equation*>
+  </theorem>
+
+  \;
+</body>
+
+<\initial>
+  <\collection>
+    <associate|info-flag|detailed>
+    <associate|page-medium|paper>
+    <associate|page-screen-margin|false>
+  </collection>
+</initial>
+
+<\references>
+  <\collection>
+    <associate|auto-1|<tuple|1|1>>
+    <associate|auto-2|<tuple|1|2>>
+    <associate|auto-3|<tuple|2|2>>
+    <associate|auto-4|<tuple|2|2>>
+    <associate|auto-5|<tuple|3|2>>
+    <associate|auto-6|<tuple|3|3>>
+    <associate|auto-7|<tuple|4|?>>
+    <associate|eq:def-of-exp|<tuple|2|?>>
+    <associate|eq:lin-trans|<tuple|1|1>>
+    <associate|lem:indepent-of-area|<tuple|1|2>>
+  </collection>
+</references>
+
+<\auxiliary>
+  <\collection>
+    <\associate|figure>
+      <tuple|normal|<surround|<hidden-binding|<tuple|auto-1>|1>||Geometrical interpretation of linear transformation.>|<pageref|auto-1>>
+
+      <tuple|normal|<surround|<hidden-binding|<tuple|auto-3>|2>||Determinant follow right-hand law.>|<pageref|auto-3>>
+
+      <tuple|normal|<surround|<hidden-binding|<tuple|auto-5>|3>||>|<pageref|auto-5>>
+    </associate>
+    <\associate|toc>
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|1<space|2spc>Determinant and trace><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-2><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2<space|2spc>Vector field view of a matrix><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-4><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|3<space|2spc>Lie group and Lie algebra><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-6><vspace|0.5fn>
+    </associate>
+  </collection>
+</auxiliary>

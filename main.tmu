@@ -1,6 +1,6 @@
 <TMU|<tuple|1.1.0|2025.2.3>>
 
-<style|<tuple|generic|number-europe|preview-ref|smart-ref|comment|physics>>
+<style|<tuple|generic|number-europe|preview-ref|smart-ref|comment|physics|llm>>
 
 <\body>
   <\hide-preamble>
@@ -13,77 +13,83 @@
     <assign|lieso|<macro|\<frak-s\>\<frak-o\>>>
   </hide-preamble>
 
-  <\framed>
-    <\theorem>
-      Every (real, finite dimensional) linear transformation is isomorphic to a real matrix, formally,
+  \;
 
-      <\equation*>
-        \<bbb-R\><rsup|m\<times\>n>\<cong\>\<cal-L\><around*|(|\<bbb-R\><rsup|n>,\<bbb-R\><rsup|m>|)>.
-      </equation*>
-    </theorem>
+  <doc-data|<\doc-title>
+    From Determinant to Lie Group Control in Robotics
+  </doc-title>|<doc-author|<author-data|<author-name|Yansong Li \ \ Qicheng Gao>|<\author-affiliation>
+    \ \ \ \ \ \ \ LiiiSTEM \ \ \ \ Peking University
+  </author-affiliation>>>>
 
-    <with|font-series|bold|Informal Proof.> Consider a vector <math|x\<in\>\<bbb-R\><rsup|2>>, rotate <math|x> by <math|\<theta\>> degree. We know that every vector <math|x\<in\>\<bbb-R\><rsup|2>> can be represented by\ 
+  <section|The geometric interpretation of the determinant>
 
-    <\equation*>
-      x<rsub|e>=x<rsub|1>e<rsub|1>+x<rsub|2>e<rsub|2>,
-    </equation*>
-
-    where <math|e<rsub|1>=<bmatrix|<tformat|<table|<row|<cell|1>>|<row|<cell|0>>>>>> and <math|e<rsub|2>=<bmatrix|<tformat|<table|<row|<cell|0>>|<row|<cell|1>>>>>>.
-
-    <\equation>
-      \<cal-A\>x<rsub|e>=x<rsub|1>\<cal-A\>e<rsub|1>+x<rsub|2>\<cal-A\>e<rsub|2><label|eq:lin-trans>
-    </equation>
-
-    Note that <smart-ref|eq:lin-trans> can be written as
-
-    <\equation*>
-      \<cal-A\>x<rsub|e>=<around*|[|\<cal-A\>e<rsub|1>\|\<cal-A\>e<rsub|2>|]><bmatrix|<tformat|<table|<row|<cell|x<rsub|1>>>|<row|<cell|x<rsub|2>>>>>><above|=|rep>A x<rsub|e>
-    </equation*>
-
-    <\equation*>
-      A=<matrix|<tformat|<table|<row|<cell|cos \<theta\>>|<cell|-sin\<theta\>>>|<row|<cell|sin \<theta\>>|<cell|cos \<theta\>>>>>>.
-    </equation*>
-
-    <big-figure|<with|gr-mode|<tuple|group-edit|edit-props>|gr-frame|<tuple|scale|2.52004cm|<tuple|0.5gw|0.5gh>>|gr-geometry|<tuple|geometry|1par|0.6par>|gr-grid|<tuple|empty>|gr-edit-grid-aspect|<tuple|<tuple|axes|none>|<tuple|1|none>|<tuple|10|none>>|gr-edit-grid|<tuple|empty>|gr-arrow-end|\<gtr\>|gr-line-width|2ln|magnify|2.519842099789746|gr-grid-old|<tuple|cartesian|<point|0|0>|1>|gr-edit-grid-old|<tuple|cartesian|<point|0|0>|1>|gr-auto-crop|true|<graphics||<with|line-width|2ln|arrow-end|\<gtr\>|<line|<point|0|0>|<point|1.0|0.0>>>|<with|line-width|2ln|arrow-end|\<gtr\>|<line|<point|0|0>|<point|0.0|1.0>>>|<with|color|blue|line-width|2ln|arrow-end|\<gtr\>|<line|<point|0|0>|<point|0.8000000000000002|0.5>>>|<with|color|blue|line-width|2ln|arrow-end|\<gtr\>|<line|<point|0|0>|<point|-0.6|0.6>>>|<with|color|blue|line-width|2ln|arrow-end|\<gtr\>|<std-arc-counterclockwise|<point|0.3|0.1875>|<point|0.4000000000000001|0.0>|<point|0.4800000000000001|0.3000000000000001>>>|<with|color|blue|<math-at|\<theta\>|<point|0.7|0.146333>>>|<math-at|\<cal-A\>e<rsub|1>|<point|0.951856|0.6>>|<math-at|\<cal-A\>e<rsub|2>|<point|-0.7|0.8>>>>|Geometrical interpretation of linear transformation.>
-  </framed>
-
-  <\framed>
-    Recall that a vector<nbsp><math|x><nbsp>can be defined without coordinates. The representation
-
-    <equation*|x=<around*|[|<tabular|<tformat|<cwith|1|-1|1|1|cell-halign|c>|<table|<row|<cell|<with|math-level|0|math-display|false|x<rsub|1>>>>|<row|<cell|<with|math-level|0|math-display|false|x<rsub|2>>>>>>>|]>>
-
-    depends on the choice of coordinate system. Denoting by<nbsp><math|x<rsub|e>><nbsp>the representation in the standard basis<nbsp><math|e<rsub|1>,e<rsub|2>>, we write
-
-    <\equation*>
-      x=x<rsub|1>e<rsub|1>+x<rsub|2>e<rsub|2><space|1em><above|\<Longleftrightarrow\>|rep><space|1em>x<rsub|e>=<bmatrix|<tformat|<table|<row|<cell|x<rsub|1>>>|<row|<cell|x<rsub|2>>>>>>.
-    </equation*>
-
-    For a matrix<nbsp><math|A\<in\>\<bbb-R\><rsup|2\<times\>2>>, written as<nbsp><math|A=<around*|[|<with|mode|text| >\<cal-A\>e<rsub|1>\<mid\>\<cal-A\>e<rsub|2><with|mode|text| >|]>><nbsp>where<nbsp>\<cal-A\><nbsp>is the linear map associated with<nbsp><math|A>, the vector
-
-    <equation*|x<rsub|a>=A<rsup|-1>x<rsub|e>>
-
-    gives the representation of<nbsp><math|x><nbsp>in the coordinate system whose axes are aligned with the column vectors of<nbsp><math|A>.
-  </framed>
-
-  <with|framed-color||<\framed>
-    <\theorem>
-      Given <math|A\<in\>S<rsub|n>>, where <math|S<rsub|n>> is the set of <math|n>-dimensional positive-definite matrices
-
-      <\equation*>
-        A\<cdot\>x<rsub|e><above|=|rep>Q\<Lambda\>Q<rsup|T>\<cdot\>x<rsub|e>.
-      </equation*>
-    </theorem>
-  </framed>>
-
-  <section|Determinant and trace>
+  <\folded-comment|+1qB1e5Qj486wk0F|+1qB1e5Qj486wk0G|comment|gao|1768269609|>
+    \ I'm unsure if the proof using the cross product here might involve circular reasoning. \ 
+  </folded-comment>
 
   <\proposition>
-    A determinant of a matrix <math|A> is the <with|font-series|bold|area> of the parallelism spanned by the transformed basis vectors.\ 
+    for a 2\<times\>2 matrix <math|A>, the absolute value of its determinant equals the area of the parallelogram spanned by the transformed basis vectors.\ 
   </proposition>
 
+  Our proof is based on the two-dimensional case,but the proof generalizes to higher dimensions, where the determinant corresponds to the signed volume of the parallelepiped spanned by the column vectors.\ 
+
   <\proof>
-    proof it!
+    Let <math|A> be a 2\<times\>2 matrix:\ 
+
+    <\equation*>
+      A=<matrix|<tformat|<table|<row|<cell|a>|<cell|c>>|<row|<cell|b>|<cell|d>>>>>
+    </equation*>
+
+    Its column vectors are:\ 
+
+    <\equation*>
+      <math-bf|v><rsub|1>=<matrix|<tformat|<table|<row|<cell|a>>|<row|<cell|b>>>>>,<space|1em><math-bf|v><rsub|2>=<matrix|<tformat|<table|<row|<cell|c>>|<row|<cell|d>>>>>
+    </equation*>
+
+    The determinant of <math|A> is:\ 
+
+    <\equation*>
+      det <around|(|A|)>=a*d-b*c
+    </equation*>
+
+    Consider the standard basis vectors <math|<math-bf|e><rsub|1>=<around|(|1,0|)>> and <math|<math-bf|e><rsub|2>=<around|(|0,1|)>>. Under the linear transformation represented by <math|A>, these vectors map to:\ 
+
+    <\equation*>
+      A<math-bf|e><rsub|1>=<math-bf|v><rsub|1>,<space|1em>A<math-bf|e><rsub|2>=<math-bf|v><rsub|2>
+    </equation*>
+
+    The area of a parallelogram spanned by vectors <math|<math-bf|v><rsub|1>> and <math|<math-bf|v><rsub|2>> in <math|\<bbb-R\><rsup|2>> is given by:\ 
+
+    <\equation*>
+      <text|Area>=<around|\<\|\|\>|<math-bf|v><rsub|1>|\<\|\|\>><around|\<\|\|\>|<math-bf|v><rsub|2>|\<\|\|\>><around|\||sin \<theta\>|\|>
+    </equation*>
+
+    where <math|\<theta\>> is the angle between <math|<math-bf|v><rsub|1>> and <math|<math-bf|v><rsub|2>>.
+
+    Using the cross product magnitude in 2D and the formula for the magnitude of the cross product:\ 
+
+    <\equation*>
+      <around|\||det <around|(|A|)>|\|>=<around|\||a*d-b*c|\|>=<around|\<\|\|\>|<math-bf|v><rsub|1>\<times\><math-bf|v><rsub|2>|\<\|\|\>>=<around|\<\|\|\>|<math-bf|v><rsub|1>|\<\|\|\>><around|\<\|\|\>|<math-bf|v><rsub|2>|\<\|\|\>><around|\||sin \<theta\>|\|>
+    </equation*>
   </proof>
+
+  \;
+
+  For an <math|n\<times\>n> matrix <math|A>, the columns represent the transformed basis vectors. The determinant gives the signed <math|n>-dimensional volume of the parallelepiped spanned by these column vectors. This follows from:\ 
+
+  <\itemize>
+    <item>The determinant is multilinear and alternating in the column vectors.
+
+    <item>It equals 1 for the identity matrix (unit volume).
+
+    <item>It scales exactly as volume under scaling of vectors.
+
+    <item>The property <math|det <around|(|A*B|)>=det <around|(|A|)>*det <around|(|B|)>> corresponds to the multiplicative property of volume scaling under composition of linear transformations.
+  </itemize>
+
+  \;
+
+  \;
 
   <\example>
     <math|A=I=<matrix|<tformat|<table|<row|<cell|1>|<cell|0>>|<row|<cell|0>|<cell|1>>>>>>. <math|det<around*|(|A|)>=1>.
@@ -93,21 +99,21 @@
     <math|A=<matrix|<tformat|<table|<row|<cell|3>|<cell|4>>|<row|<cell|2>|<cell|1>>>>>>. <math|det<around*|(|A|)>=-2>
 
     <big-figure|<with|gr-mode|<tuple|edit|cline>|gr-frame|<tuple|scale|1cm|<tuple|0.5gw|0.5gh>>|gr-geometry|<tuple|geometry|1par|0.6par>|gr-grid|<tuple|empty>|gr-edit-grid-aspect|<tuple|<tuple|axes|none>|<tuple|1|none>|<tuple|10|none>>|gr-edit-grid|<tuple|empty>|gr-color|blue|gr-arrow-end|\<gtr\>|gr-fill-color|cyan|gr-grid-old|<tuple|cartesian|<point|0|0>|1>|gr-edit-grid-old|<tuple|cartesian|<point|0|0>|1>|gr-auto-crop|true|<graphics||<with|color|blue|arrow-end|\<gtr\>|<line|<point|0|0>|<point|3.0|2.0>>>|<with|color|blue|arrow-end|\<gtr\>|<line|<point|0|0>|<point|4.0|1.0>>>|<with|color|blue|fill-color|cyan|arrow-end|\<gtr\>|<cline|<point|0|0>|<point|4.0|1.0>|<point|3.0|2.0>>>>>|Determinant follow right-hand law.>
+
+    \;
   </example>
 
-  <\idef>
-    The trace <math|tr<around*|(|A|)>> of a matrix <math|A> is the <with|font-series|bold|divergence> of corresponding linear transformation <math|\<cal-A\>>!
-  </idef>
+  <section|The vector field view of a matrix>
 
-  <\question>
-    What is the divergence of a linear transformation.
-  </question>
-
-  <section|Vector field view of a matrix>
+  <folded-comment|+1qB1e5Qj486wk0J|+1qB1e5Qj486wk0K|comment|gao|1768280080||Personally, I prefer the second definition because it is easier to understand. However, I've retained the teacher's version.>
 
   <\definition>
-    A vector field of <math|V> is a mapping from <math|V> to <math|V>. Intuitively, a vector field append all vectors a vector!
+    A vector field of <math|V> is a mapping from <math|V> to <math|V>.
+
+    A vector field is a function that assigns a vector to each point in a subset of space.\ 
   </definition>
+
+  Intuitively, a vector field attaches a vector to each point in space.
 
   <\example>
     Velocity of a space can be considered as a vector field, which gives all particles in this space a velocity vector!
@@ -117,14 +123,16 @@
     The divergence of a vector field <math|A> is defined as\ 
 
     <\equation*>
-      div <around*|(|A;area|)>=<frac|<text|rate of area change> |area>.
+      div <around*|(|A;area|)>=<frac|<text|rate of area change> |area>
     </equation*>
+
+    which can be used to characterize the degree to which a vector field diverges at each point in space.
   </idef>
 
   <big-figure|<with|gr-mode|<tuple|edit|cline>|gr-frame|<tuple|scale|1cm|<tuple|0.5gw|0.569995gh>>|gr-geometry|<tuple|geometry|1par|0.6par>|gr-grid|<tuple|empty>|gr-edit-grid-aspect|<tuple|<tuple|axes|none>|<tuple|1|none>|<tuple|10|none>>|gr-edit-grid|<tuple|empty>|gr-arrow-end|\<gtr\>|gr-fill-color|cyan|gr-opacity|20%|gr-grid-old|<tuple|cartesian|<point|0|0>|1>|gr-edit-grid-old|<tuple|cartesian|<point|0|0>|1>|gr-auto-crop|true|<graphics||<point|-1.4|1.2>|<point|-1.7|0>|<point|-1.2|-0.6>|<point|0.4|0.3>|<point|0.7|1.5>|<point|-0.7|1>|<point|0.1|0>|<with|arrow-end|\<gtr\>|<line|<point|-1.4|1.2>|<point|-1.7000000000000004|1.0>>>|<with|arrow-end|\<gtr\>|<line|<point|-1.7|0>|<point|-2.0|0.3000000000000001>>>|<with|arrow-end|\<gtr\>|<line|<point|-1.2|-0.6>|<point|-1.0|-0.2>>>|<with|arrow-end|\<gtr\>|<line|<point|-0.7|1>|<point|-0.6000000000000002|0.6>>>|<with|arrow-end|\<gtr\>|<line|<point|0.1|0>|<point|-0.5|0.1999999999999999>>>|<with|fill-color|cyan|arrow-end|\<gtr\>|opacity|20%|<cline|<point|-2.2|1.4>|<point|-2.2|-0.7>|<point|-0.10000000000000019|-0.7>>>>>|>
 
   <\example>
-    A square matrix <math|A\<in\>\<bbb-R\><rsup|n\<times\>n>> can be considered as a vector field! <math|A> is also called <with|font-shape|italic|linear vector field>
+    A square matrix <math|A\<in\>\<bbb-R\><rsup|n\<times\>n>> can be considered as a vector field! <math|A> is also called <with|font-shape|italic|linear vector field>.
   </example>
 
   <\lemma>
@@ -158,6 +166,20 @@
       \;
     </proof>
   </folded-comment>
+
+  \;
+
+  <section|The geometric interpretation of the trace>
+
+  <\proposition>
+    The magnitude of the trace <math|tr<around*|(|A|)>> of a matrix <math|A> equals to the <with|font-series|bold|divergence> of corresponding linear transformation <math|\<cal-A\>>.
+  </proposition>
+
+  <\question>
+    What is the divergence of a linear transformation.
+  </question>
+
+  \;
 
   <section|Lie group and Lie algebra>
 
@@ -276,34 +298,54 @@
 
 <\references>
   <\collection>
+    <associate|adding-a-multiple-of-one-column-to-another|<tuple|3|?>>
+    <associate|area-calculation|<tuple|1|?>>
     <associate|auto-1|<tuple|1|1>>
-    <associate|auto-2|<tuple|1|2>>
-    <associate|auto-3|<tuple|2|2>>
+    <associate|auto-10|<tuple|3|?>>
+    <associate|auto-11|<tuple|3|?>>
+    <associate|auto-12|<tuple|3|?>>
+    <associate|auto-13|<tuple|3|?>>
+    <associate|auto-14|<tuple|3|?>>
+    <associate|auto-2|<tuple|1|1>>
+    <associate|auto-3|<tuple|2|1>>
     <associate|auto-4|<tuple|2|2>>
     <associate|auto-5|<tuple|3|2>>
-    <associate|auto-6|<tuple|3|3>>
-    <associate|auto-7|<tuple|4|?>>
-    <associate|eq:def-of-exp|<tuple|2|?>>
-    <associate|eq:lin-trans|<tuple|1|1>>
+    <associate|auto-6|<tuple|4|2>>
+    <associate|auto-7|<tuple|3|?>>
+    <associate|auto-8|<tuple|3|?>>
+    <associate|auto-9|<tuple|3|?>>
+    <associate|conclusion|<tuple|<with|mode|<quote|math>|\<bullet\>>|?>>
+    <associate|definitions|<tuple|1|?>>
+    <associate|eq:def-of-exp|<tuple|1|4>>
+    <associate|generalization-to-higher-dimensions|<tuple|1|?>>
+    <associate|geometric-interpretation|<tuple|1|?>>
     <associate|lem:indepent-of-area|<tuple|1|2>>
+    <associate|proof-outline|<tuple|1|?>>
+    <associate|proof-steps|<tuple|<with|mode|<quote|math>|\<bullet\>>|?>>
+    <associate|revised-formal-proof|<tuple|3|?>>
+    <associate|scaling-a-column|<tuple|3|?>>
+    <associate|step-1-diagonal-matrix-case|<tuple|3|?>>
+    <associate|step-2-elementary-matrix-cases|<tuple|3|?>>
+    <associate|step-3-general-matrix-via-lu-decomposition|<tuple|3|?>>
+    <associate|swapping-columns|<tuple|3|?>>
   </collection>
 </references>
 
 <\auxiliary>
   <\collection>
     <\associate|figure>
-      <tuple|normal|<surround|<hidden-binding|<tuple|auto-1>|1>||Geometrical interpretation of linear transformation.>|<pageref|auto-1>>
+      <tuple|normal|<surround|<hidden-binding|<tuple|auto-2>|1>||Determinant follow right-hand law.>|<pageref|auto-2>>
 
-      <tuple|normal|<surround|<hidden-binding|<tuple|auto-3>|2>||Determinant follow right-hand law.>|<pageref|auto-3>>
+      <tuple|normal|<surround|<hidden-binding|<tuple|auto-4>|2>||>|<pageref|auto-4>>
 
-      <tuple|normal|<surround|<hidden-binding|<tuple|auto-5>|3>||>|<pageref|auto-5>>
+      <tuple|normal|<surround|<hidden-binding|<tuple|auto-6>|3>||An example of <with|mode|<quote|math>|det<around*|(|R|)>\<less\>0>.>|<pageref|auto-6>>
     </associate>
     <\associate|toc>
-      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|1<space|2spc>Determinant and trace><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-2><vspace|0.5fn>
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|1<space|2spc>Determinant and trace><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-1><vspace|0.5fn>
 
-      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2<space|2spc>Vector field view of a matrix><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-4><vspace|0.5fn>
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2<space|2spc>Vector field view of a matrix><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-3><vspace|0.5fn>
 
-      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|3<space|2spc>Lie group and Lie algebra><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-6><vspace|0.5fn>
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|3<space|2spc>Lie group and Lie algebra><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-5><vspace|0.5fn>
     </associate>
   </collection>
 </auxiliary>

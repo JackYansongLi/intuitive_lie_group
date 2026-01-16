@@ -119,40 +119,58 @@
     Velocity of a space can be considered as a vector field, which gives all particles in this space a velocity vector!
   </example>
 
-  <\idef>
-    The divergence of a vector field <math|A> is defined as\ 
-
-    <\equation*>
-      div <around*|(|A;area|)>=<frac|<text|rate of area change> |area>
-    </equation*>
-
-    which can be used to characterize the degree to which a vector field diverges at each point in space.
-  </idef>
-
   <big-figure|<with|gr-mode|<tuple|edit|cline>|gr-frame|<tuple|scale|1cm|<tuple|0.5gw|0.569995gh>>|gr-geometry|<tuple|geometry|1par|0.6par>|gr-grid|<tuple|empty>|gr-edit-grid-aspect|<tuple|<tuple|axes|none>|<tuple|1|none>|<tuple|10|none>>|gr-edit-grid|<tuple|empty>|gr-arrow-end|\<gtr\>|gr-fill-color|cyan|gr-opacity|20%|gr-grid-old|<tuple|cartesian|<point|0|0>|1>|gr-edit-grid-old|<tuple|cartesian|<point|0|0>|1>|gr-auto-crop|true|<graphics||<point|-1.4|1.2>|<point|-1.7|0>|<point|-1.2|-0.6>|<point|0.4|0.3>|<point|0.7|1.5>|<point|-0.7|1>|<point|0.1|0>|<with|arrow-end|\<gtr\>|<line|<point|-1.4|1.2>|<point|-1.7000000000000004|1.0>>>|<with|arrow-end|\<gtr\>|<line|<point|-1.7|0>|<point|-2.0|0.3000000000000001>>>|<with|arrow-end|\<gtr\>|<line|<point|-1.2|-0.6>|<point|-1.0|-0.2>>>|<with|arrow-end|\<gtr\>|<line|<point|-0.7|1>|<point|-0.6000000000000002|0.6>>>|<with|arrow-end|\<gtr\>|<line|<point|0.1|0>|<point|-0.5|0.1999999999999999>>>|<with|fill-color|cyan|arrow-end|\<gtr\>|opacity|20%|<cline|<point|-2.2|1.4>|<point|-2.2|-0.7>|<point|-0.10000000000000019|-0.7>>>>>|>
 
   <\example>
-    A square matrix <math|A\<in\>\<bbb-R\><rsup|n\<times\>n>> can be considered as a vector field! <math|A> is also called <with|font-shape|italic|linear vector field>.
+    A square matrix <math|A\<in\>\<bbb-R\><rsup|n\<times\>n>> can be considered as a vector field by assigning to every point <with|font-series|bold|v> the vector <with|font-shape|italic|A><with|font-series|bold|v> via matrix multiplication! <math|A> is also called <with|font-shape|italic|linear vector field>.
   </example>
 
-  <\lemma>
-    <label|lem:indepent-of-area><math|div <around*|(|A;area|)>=div <around*|(|A|)>> is independent of the choice of area!
-  </lemma>
+  <folded-comment|+2NRENTXD1186G82m|+2NRENTXD1186G82n|comment|gao|1768464198||I'm not sure if "volume" is accurate here.>
 
-  <\proof>
-    Proof it geometrically
-  </proof>
-
-  <\theorem>
-    The trace of a linear vector field <math|A> is\ 
+  <\definition>
+    The divergence of a vector field <math|A> is defined as\ 
 
     <\equation*>
-      tr<around*|(|A|)>=div<around*|(|A|)>.
+      div <around*|(|A;volume|)>=<frac|<text|rate of volume change> |volume>
     </equation*>
+
+    which can be used to characterize the degree to which a vector field diverges at each point in space.
+  </definition>
+
+  <\theorem>
+    Let v(x)=Ax be a linear vector field in R<math|<rsup|3>>, where A is a constant 3\<times\>3 matrix. Then the divergence of the field is constant everywhere, independent of the position x.
   </theorem>
 
   <\proof>
-    <hlink|See Bilibili|https://www.bilibili.com/video/BV1JK4y1i7RE?spm_id_from=333.788.videopod.sections&vd_source=139db7133383a3fb17e08cd5bc65a6e3>
+    Take a point <with|font-shape|italic|P> at <with|font-series|bold|<with|font-shape|italic|x>> and a neighboring point <with|font-shape|italic|P<math|<rsub|1>>> at <with|font-series|bold|<with|font-shape|italic|x>>+<with|font-shape|italic|<with|font-series|bold|d>>, where <with|font-shape|italic|<with|font-series|bold|d>> is infinitesimal.<with|font-series|bold|>
+
+    The velocities are
+
+    <\padded-center>
+      <math|v<around*|(|<with|font-series|bold|x>|)>=A<with|font-series|bold|x>,v<around*|(|<with|font-series|bold|x>+<with|font-series|bold|d>|)>=A<with|font-series|bold|x>+A<with|font-series|bold|d>.>
+    </padded-center>
+
+    After a short time \<varepsilon\>,\ 
+
+    <\padded-center>
+      <math|P\<mapsto\><with|font-series|bold|x>+\<varepsilon\>A<with|font-series|bold|x>,P<rsub|1>\<mapsto\><with|font-series|bold|x>+<with|font-series|bold|d>+\<varepsilon\>A<around*|(|<with|font-series|bold|x>+<with|font-series|bold|d>|)>.>
+    </padded-center>
+
+    The new relative vector is
+
+    <\with|par-mode|center>
+      <math|d<around*|(|\<varepsilon\>|)>=<with|font-series|bold|d>+\<varepsilon\>A<with|font-series|bold|d>=<around*|(|I+\<varepsilon\>A|)><with|font-series|bold|d>.>
+    </with>
+
+    For an infinitesimal volume element spanned by <math|<with|font-series|bold|d<rsub|1>>>,<math|<with|font-series|bold|d<rsub|2>>>,<math|<with|font-series|bold|d<rsub|3>>>,each <math|<with|font-series|bold|d<rsub|i>>> transforms as
+
+    <\with|par-mode|center>
+      <math|<with|font-series|bold|d<rsub|i>>\<mapsto\><with|font-series|bold|d<rsub|i>>+\<varepsilon\>A<with|font-series|bold|d<rsub|i>>=><math|<around*|(|I+\<varepsilon\>A|)><with|font-series|bold|d><rsub|i>>.
+    </with>
+
+    Thus the volume scales by det(<math|I+\<varepsilon\>A>), which is independent of <math|<with|font-series|bold|x>>.
+
+    Hence the local volume change is the same everywhere.
   </proof>
 
   <\folded-comment|+1oYzmf2wz7E6F6d|+1oYzmf2wz7E6F6e|comment|Jack Yansong Li|1768221281|>
@@ -169,15 +187,27 @@
 
   \;
 
-  <section|The geometric interpretation of the trace>
+  <section|The trace of a matrix>
 
-  <\proposition>
+  <folded-comment|+1fGcKRm82VaGqWYA|+1fGcKRm82VaGqWYB|comment|gao|1768355203||I'm not sure whether I should use "proposition" or "theorem" here.>
+
+  <\theorem>
     The magnitude of the trace <math|tr<around*|(|A|)>> of a matrix <math|A> equals to the <with|font-series|bold|divergence> of corresponding linear transformation <math|\<cal-A\>>.
-  </proposition>
 
-  <\question>
-    What is the divergence of a linear transformation.
-  </question>
+    <\equation*>
+      tr<around*|(|A|)>=div<around*|(|\<cal-A\>|)>.
+    </equation*>
+  </theorem>
+
+  <\proof>
+    Consider the volume spanned by unit eigenvectors. Consider a very small amount of time <math|\<varepsilon\>> . The length of a eigenvector is 1,after time <math|\<varepsilon\>> ,the length is <math|1+\<varepsilon\>*\<lambda\>> . The area after time <math|\<varepsilon\>> is\ 
+
+    <\equation*>
+      <math-up|div><around*|(|A|)>=<frac|det <around*|(|<tabular*|<tformat|<table|<row|<cell|1+\<varepsilon\>*\<lambda\><rsub|1>>|<cell|0>>|<row|<cell|0>|<cell|1+\<varepsilon\>*\<lambda\><rsub|2>>>>>>|)>|1>=1+\<varepsilon\>*<around*|(|\<lambda\><rsub|1>+\<lambda\><rsub|2>|)>+<text|h.o.t >
+    </equation*>
+  </proof>
+
+  \;
 
   \;
 
@@ -298,36 +328,16 @@
 
 <\references>
   <\collection>
-    <associate|adding-a-multiple-of-one-column-to-another|<tuple|3|?>>
-    <associate|area-calculation|<tuple|1|?>>
     <associate|auto-1|<tuple|1|1>>
-    <associate|auto-10|<tuple|3|?>>
-    <associate|auto-11|<tuple|3|?>>
-    <associate|auto-12|<tuple|3|?>>
-    <associate|auto-13|<tuple|3|?>>
-    <associate|auto-14|<tuple|3|?>>
-    <associate|auto-2|<tuple|1|1>>
-    <associate|auto-3|<tuple|2|1>>
+    <associate|auto-2|<tuple|1|2>>
+    <associate|auto-3|<tuple|2|2>>
     <associate|auto-4|<tuple|2|2>>
-    <associate|auto-5|<tuple|3|2>>
-    <associate|auto-6|<tuple|4|2>>
-    <associate|auto-7|<tuple|3|?>>
-    <associate|auto-8|<tuple|3|?>>
-    <associate|auto-9|<tuple|3|?>>
-    <associate|conclusion|<tuple|<with|mode|<quote|math>|\<bullet\>>|?>>
-    <associate|definitions|<tuple|1|?>>
-    <associate|eq:def-of-exp|<tuple|1|4>>
-    <associate|generalization-to-higher-dimensions|<tuple|1|?>>
-    <associate|geometric-interpretation|<tuple|1|?>>
-    <associate|lem:indepent-of-area|<tuple|1|2>>
-    <associate|proof-outline|<tuple|1|?>>
-    <associate|proof-steps|<tuple|<with|mode|<quote|math>|\<bullet\>>|?>>
-    <associate|revised-formal-proof|<tuple|3|?>>
-    <associate|scaling-a-column|<tuple|3|?>>
-    <associate|step-1-diagonal-matrix-case|<tuple|3|?>>
-    <associate|step-2-elementary-matrix-cases|<tuple|3|?>>
-    <associate|step-3-general-matrix-via-lu-decomposition|<tuple|3|?>>
-    <associate|swapping-columns|<tuple|3|?>>
+    <associate|auto-5|<tuple|3|3>>
+    <associate|auto-6|<tuple|4|4>>
+    <associate|auto-7|<tuple|3|4>>
+    <associate|eq:def-of-exp|<tuple|1|5>>
+    <associate|footnote-1|<tuple|1|?>>
+    <associate|footnr-1|<tuple|1|?>>
   </collection>
 </references>
 
@@ -338,14 +348,16 @@
 
       <tuple|normal|<surround|<hidden-binding|<tuple|auto-4>|2>||>|<pageref|auto-4>>
 
-      <tuple|normal|<surround|<hidden-binding|<tuple|auto-6>|3>||An example of <with|mode|<quote|math>|det<around*|(|R|)>\<less\>0>.>|<pageref|auto-6>>
+      <tuple|normal|<surround|<hidden-binding|<tuple|auto-7>|3>||An example of <with|mode|<quote|math>|det<around*|(|R|)>\<less\>0>.>|<pageref|auto-7>>
     </associate>
     <\associate|toc>
-      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|1<space|2spc>Determinant and trace><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-1><vspace|0.5fn>
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|1<space|2spc>The geometric interpretation of the determinant><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-1><vspace|0.5fn>
 
-      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2<space|2spc>Vector field view of a matrix><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-3><vspace|0.5fn>
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2<space|2spc>The vector field view of a matrix><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-3><vspace|0.5fn>
 
-      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|3<space|2spc>Lie group and Lie algebra><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-5><vspace|0.5fn>
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|3<space|2spc>The trace of a matrix><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-5><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|4<space|2spc>Lie group and Lie algebra><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-6><vspace|0.5fn>
     </associate>
   </collection>
 </auxiliary>

@@ -13,83 +13,87 @@
     <assign|lieso|<macro|\<frak-s\>\<frak-o\>>>
   </hide-preamble>
 
-  \;
+  <doc-data|<doc-title|From Determinant to Lie Group Control in Robotics>|<doc-author|<author-data|<author-name|Qicheng Gao>|<author-email|pku.>|<\author-affiliation>
+    Peking University
+  </author-affiliation>>>|<doc-author|<author-data|<author-name|Yansong Li>|<\author-affiliation>
+    Liii Network
+  </author-affiliation>|<author-email|yansong@liii.pro>>>>
 
-  <doc-data|<\doc-title>
-    From Determinant to Lie Group Control in Robotics
-  </doc-title>|<doc-author|<author-data|<author-name|Yansong Li \ \ Qicheng Gao>|<\author-affiliation>
-    \ \ \ \ \ \ \ LiiiSTEM \ \ \ \ Peking University
-  </author-affiliation>>>>
+  <\table-of-contents|toc>
+    <vspace*|1fn><with|font-series|bold|math-font-series|bold|1<space|2spc>The geometric interpretation of the determinant><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-1><vspace|0.5fn>
+
+    <vspace*|1fn><with|font-series|bold|math-font-series|bold|2<space|2spc>The vector field view of a matrix><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-3><vspace|0.5fn>
+
+    <vspace*|1fn><with|font-series|bold|math-font-series|bold|3<space|2spc>The trace of a matrix><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-5><vspace|0.5fn>
+
+    <vspace*|1fn><with|font-series|bold|math-font-series|bold|4<space|2spc>Lie group and Lie algebra><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-6><vspace|0.5fn>
+
+    <vspace*|1fn><with|font-series|bold|math-font-series|bold|Bibliography><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-8><vspace|0.5fn>
+  </table-of-contents>
 
   <section|The geometric interpretation of the determinant>
 
-  <\folded-comment|+1qB1e5Qj486wk0F|+1qB1e5Qj486wk0G|comment|gao|1768269609|>
-    \ I'm unsure if the proof using the cross product here might involve circular reasoning. \ 
-  </folded-comment>
+  <\definition>
+    <dueto|Determinant>The determinant of a real-valued square matrix <math|A> is defined as the area of the parallelogram spanned by the column vectors of <math|A>.
+  </definition>
+
+  <unfolded-comment|+oaA7tdA2B5cNQyP|+oaA7tdA2B5cNQyQ|comment|Jack Yansong Li|1768567299||Missing part: How to calculate determinant of a square matrix! Refer to any book about linear algebra <cite|strang_linear_nodate>>
 
   <\proposition>
-    for a 2\<times\>2 matrix <math|A>, the absolute value of its determinant equals the area of the parallelogram spanned by the transformed basis vectors.\ 
+    For a 2\<times\>2 matrix <math|A\<triangleq\><around*|[|<math-bf|v><rsub|1>\|<math-bf|v><rsub|2>|]>>, the following equality holds
+
+    <\equation>
+      det<around*|(|A|)>=<around|\<\|\|\>|<math-bf|v><rsub|1>\<times\><math-bf|v><rsub|2>|\<\|\|\>>,<label|eq:det-def-consistency>
+    </equation>
+
+    where the right hand side of <smart-ref|eq:det-def-consistency> is the standard definition of area from Euclidean geometry.
   </proposition>
 
   Our proof is based on the two-dimensional case,but the proof generalizes to higher dimensions, where the determinant corresponds to the signed volume of the parallelepiped spanned by the column vectors.\ 
 
   <\proof>
-    Let <math|A> be a 2\<times\>2 matrix:\ 
+    Let <math|A> be a 2\<times\>2 matrix
 
     <\equation*>
       A=<matrix|<tformat|<table|<row|<cell|a>|<cell|c>>|<row|<cell|b>|<cell|d>>>>>
     </equation*>
 
-    Its column vectors are:\ 
+    with column vectors be
 
     <\equation*>
-      <math-bf|v><rsub|1>=<matrix|<tformat|<table|<row|<cell|a>>|<row|<cell|b>>>>>,<space|1em><math-bf|v><rsub|2>=<matrix|<tformat|<table|<row|<cell|c>>|<row|<cell|d>>>>>
+      <math-bf|v><rsub|1>=<matrix|<tformat|<table|<row|<cell|a>>|<row|<cell|b>>>>><space|1em>and<space|1em><math-bf|v><rsub|2>=<matrix|<tformat|<table|<row|<cell|c>>|<row|<cell|d>>>>>.
     </equation*>
 
-    The determinant of <math|A> is:\ 
+    Recall from linear algebra, <math|det <around|(|A|)>=a*d-b*c>. The vectors <math|<math-bf|v><rsub|1>> and <math|<math-bf|v><rsub|2>> can be considerd as transformed vectors transformed from standard basis vectors <math|<math-bf|e><rsub|1>=<around|(|1,0|)>> and <math|<math-bf|e><rsub|2>=<around|(|0,1|)>> under the linear transformation represented by <math|A>, i.e.,
 
     <\equation*>
-      det <around|(|A|)>=a*d-b*c
+      A<math-bf|e><rsub|1>=<math-bf|v><rsub|1>,<space|1em>A<math-bf|e><rsub|2>=<math-bf|v><rsub|2>.
     </equation*>
 
-    Consider the standard basis vectors <math|<math-bf|e><rsub|1>=<around|(|1,0|)>> and <math|<math-bf|e><rsub|2>=<around|(|0,1|)>>. Under the linear transformation represented by <math|A>, these vectors map to:\ 
+    From Euclidean geometry, the area of a parallelogram spanned by vectors <math|<math-bf|v><rsub|1>> and <math|<math-bf|v><rsub|2>> is
 
     <\equation*>
-      A<math-bf|e><rsub|1>=<math-bf|v><rsub|1>,<space|1em>A<math-bf|e><rsub|2>=<math-bf|v><rsub|2>
+      <text|Area>=<around|\<\|\|\>|<math-bf|v><rsub|1>|\<\|\|\>><around|\<\|\|\>|<math-bf|v><rsub|2>|\<\|\|\>><around|\||sin \<theta\>|\|>,
     </equation*>
 
-    The area of a parallelogram spanned by vectors <math|<math-bf|v><rsub|1>> and <math|<math-bf|v><rsub|2>> in <math|\<bbb-R\><rsup|2>> is given by:\ 
+    where <math|\<theta\>> is the angle between <math|<math-bf|v><rsub|1>> and <math|<math-bf|v><rsub|2>>. Therefore, by the definition of cross product, we have
 
     <\equation*>
-      <text|Area>=<around|\<\|\|\>|<math-bf|v><rsub|1>|\<\|\|\>><around|\<\|\|\>|<math-bf|v><rsub|2>|\<\|\|\>><around|\||sin \<theta\>|\|>
-    </equation*>
-
-    where <math|\<theta\>> is the angle between <math|<math-bf|v><rsub|1>> and <math|<math-bf|v><rsub|2>>.
-
-    Using the cross product magnitude in 2D and the formula for the magnitude of the cross product:\ 
-
-    <\equation*>
-      <around|\||det <around|(|A|)>|\|>=<around|\||a*d-b*c|\|>=<around|\<\|\|\>|<math-bf|v><rsub|1>\<times\><math-bf|v><rsub|2>|\<\|\|\>>=<around|\<\|\|\>|<math-bf|v><rsub|1>|\<\|\|\>><around|\<\|\|\>|<math-bf|v><rsub|2>|\<\|\|\>><around|\||sin \<theta\>|\|>
+      <around|\||det <around|(|A|)>|\|>=<around|\||a*d-b*c|\|>=<around|\<\|\|\>|<math-bf|v><rsub|1>\<times\><math-bf|v><rsub|2>|\<\|\|\>>=<around|\<\|\|\>|<math-bf|v><rsub|1>|\<\|\|\>><around|\<\|\|\>|<math-bf|v><rsub|2>|\<\|\|\>><around|\||sin \<theta\>|\|>.
     </equation*>
   </proof>
 
   \;
 
-  For an <math|n\<times\>n> matrix <math|A>, the columns represent the transformed basis vectors. The determinant gives the signed <math|n>-dimensional volume of the parallelepiped spanned by these column vectors. This follows from:\ 
+  Given a <math|n\<times\>n> matrix <math|A>, the determinant can be considered as:
 
   <\itemize>
-    <item>The determinant is multilinear and alternating in the column vectors.
+    <item>volume of the parallelepiped spanned by transformed (from standard basis vectors) vectors under transformation <math|A>.
 
-    <item>It equals 1 for the identity matrix (unit volume).
-
-    <item>It scales exactly as volume under scaling of vectors.
-
-    <item>The property <math|det <around|(|A*B|)>=det <around|(|A|)>*det <around|(|B|)>> corresponds to the multiplicative property of volume scaling under composition of linear transformations.
+    <item>scaling factor of the volumn of the closed region spanned by the standard basis vectors under transformation <math|A>.
   </itemize>
 
-  \;
-
-  \;
+  The property <math|det <around|(|A*B|)>=det <around|(|A|)>*det <around|(|B|)>> follows directly from the above two viewpoint of determinant.
 
   <\example>
     <math|A=I=<matrix|<tformat|<table|<row|<cell|1>|<cell|0>>|<row|<cell|0>|<cell|1>>>>>>. <math|det<around*|(|A|)>=1>.
@@ -108,9 +112,7 @@
   <folded-comment|+1qB1e5Qj486wk0J|+1qB1e5Qj486wk0K|comment|gao|1768280080||Personally, I prefer the second definition because it is easier to understand. However, I've retained the teacher's version.>
 
   <\definition>
-    A vector field of <math|V> is a mapping from <math|V> to <math|V>.
-
-    A vector field is a function that assigns a vector to each point in a subset of space.\ 
+    A vector field of <math|V> is a mapping from <math|V> to <math|V>. A vector field is a function that assigns a vector to each point in a subset of space.\ 
   </definition>
 
   Intuitively, a vector field attaches a vector to each point in space.
@@ -131,49 +133,51 @@
     The divergence of a vector field <math|A> is defined as\ 
 
     <\equation*>
-      div <around*|(|A;volume|)>=<frac|<text|rate of volume change> |volume>
+      div <around*|(|A;volume|)>=lim<rsub|volume\<rightarrow\>0><frac|<text|rate of volume change> |volume>
     </equation*>
 
     which can be used to characterize the degree to which a vector field diverges at each point in space.
   </definition>
 
   <\theorem>
-    Let v(x)=Ax be a linear vector field in R<math|<rsup|3>>, where A is a constant 3\<times\>3 matrix. Then the divergence of the field is constant everywhere, independent of the position x.
+    <with|text-bg-color|#ffe47f|Let v(x)=Ax be a linear vector field> in <math|\<bbb-R\><rsup|3>>, where A is a constant 3\<times\>3 matrix. Then the divergence of the vector field is constant everywhere, independent of the position x.
   </theorem>
 
   <\proof>
-    Take a point <with|font-shape|italic|P> at <with|font-series|bold|<with|font-shape|italic|x>> and a neighboring point <with|font-shape|italic|P<math|<rsub|1>>> at <with|font-series|bold|<with|font-shape|italic|x>>+<with|font-shape|italic|<with|font-series|bold|d>>, where <with|font-shape|italic|<with|font-series|bold|d>> is infinitesimal.<with|font-series|bold|>
+    Given <math|x\<in\>\<bbb-R\><rsup|3>>, consider the neighbourhood <math|B<rsub|d><around*|(|x|)>> of <math|x> defined as
 
-    The velocities are
+    <\equation*>
+      B<rsub|\<rho\>><around*|(|x|)>\<triangleq\><around*|{|x<rprime|'>\|<around*|\<\|\|\>|x<rprime|'>-x|\<\|\|\>>\<leq\>\<rho\>|}>,
+    </equation*>
 
-    <\padded-center>
-      <math|v<around*|(|<with|font-series|bold|x>|)>=A<with|font-series|bold|x>,v<around*|(|<with|font-series|bold|x>+<with|font-series|bold|d>|)>=A<with|font-series|bold|x>+A<with|font-series|bold|d>.>
-    </padded-center>
+    where <math|\<rho\>\<geq\>0> is the radius. The velocity of <math|x> under vector field <math|A> is <math|v<around*|(|x|)>=A x>. Consider a boundary point <math|x+\<rho\> e>, where <math|<around*|\<\|\|\>|e|\<\|\|\>>=1>. The velocity of <math|><math|x+\<rho\> e> is given by
 
-    After a short time \<varepsilon\>,\ 
+    <\equation*>
+      v<around*|(|x+\<rho\> e|)>=A x+\<rho\>A e.
+    </equation*>
 
-    <\padded-center>
-      <math|P\<mapsto\><with|font-series|bold|x>+\<varepsilon\>A<with|font-series|bold|x>,P<rsub|1>\<mapsto\><with|font-series|bold|x>+<with|font-series|bold|d>+\<varepsilon\>A<around*|(|<with|font-series|bold|x>+<with|font-series|bold|d>|)>.>
-    </padded-center>
+    After a short time <math|\<varepsilon\>\<gtr\>0>,
 
-    The new relative vector is
+    <\equation*>
+      x\<mapsto\>x+\<varepsilon\>A x
+    </equation*>
 
-    <\with|par-mode|center>
-      <math|d<around*|(|\<varepsilon\>|)>=<with|font-series|bold|d>+\<varepsilon\>A<with|font-series|bold|d>=<around*|(|I+\<varepsilon\>A|)><with|font-series|bold|d>.>
-    </with>
+    and
 
-    For an infinitesimal volume element spanned by <math|<with|font-series|bold|d<rsub|1>>>,<math|<with|font-series|bold|d<rsub|2>>>,<math|<with|font-series|bold|d<rsub|3>>>,each <math|<with|font-series|bold|d<rsub|i>>> transforms as
+    <\equation*>
+      x+\<rho\> e\<mapsto\>x+\<rho\> e+\<varepsilon\><around*|(|A x+\<rho\>A e|)>.
+    </equation*>
 
-    <\with|par-mode|center>
-      <math|<with|font-series|bold|d<rsub|i>>\<mapsto\><with|font-series|bold|d<rsub|i>>+\<varepsilon\>A<with|font-series|bold|d<rsub|i>>=><math|<around*|(|I+\<varepsilon\>A|)><with|font-series|bold|d><rsub|i>>.
-    </with>
+    Therefore, the new distance between the selected boundary point to the center is
 
-    Thus the volume scales by det(<math|I+\<varepsilon\>A>), which is independent of <math|<with|font-series|bold|x>>.
+    <\equation*>
+      \<rho\> e+\<varepsilon\>\<rho\>A e
+    </equation*>
 
-    Hence the local volume change is the same everywhere.
+    <unfolded-comment|+oaA7tdA2B5cNQyR|+oaA7tdA2B5cNQyS|comment|Jack Yansong Li|1768569731||Finish it>
   </proof>
 
-  <\folded-comment|+1oYzmf2wz7E6F6d|+1oYzmf2wz7E6F6e|comment|Jack Yansong Li|1768221281|>
+  <\unfolded-comment|+1oYzmf2wz7E6F6d|+1oYzmf2wz7E6F6e|comment|Jack Yansong Li|1768221281|>
     <\proof>
       Consider the area spanned by eigenvectors. Consider a very small amont of time <math|\<varepsilon\>>. The length of a eigenvector is <math|1>, after time <math|\<varepsilon\>>, the length is <math|1+\<varepsilon\>\<lambda\>>. The area after time <math|\<varepsilon\>> is\ 
 
@@ -183,7 +187,7 @@
 
       \;
     </proof>
-  </folded-comment>
+  </unfolded-comment>
 
   \;
 
@@ -191,12 +195,24 @@
 
   <folded-comment|+1fGcKRm82VaGqWYA|+1fGcKRm82VaGqWYB|comment|gao|1768355203||I'm not sure whether I should use "proposition" or "theorem" here.>
 
-  <\theorem>
-    The magnitude of the trace <math|tr<around*|(|A|)>> of a matrix <math|A> equals to the <with|font-series|bold|divergence> of corresponding linear transformation <math|\<cal-A\>>.
+  <\definition>
+    The trace <math|tr<around*|(|A|)>> of a matrix <math|A> is given by\ 
 
     <\equation*>
-      tr<around*|(|A|)>=div<around*|(|\<cal-A\>|)>.
+      tr<around*|(|A|)>=div<around*|(|\<cal-A\>|)>,
     </equation*>
+
+    where <math|\<cal-A\>> is the corresponding linear transformation of <math|A>.
+  </definition>
+
+  <\theorem>
+    \;
+
+    <\equation*>
+      tr<around*|(|A|)>=<big|sum><rsub|i>A<rsub|i i>,
+    </equation*>
+
+    where <math|A<rsub|i i>> is the ..
   </theorem>
 
   <\proof>
@@ -315,7 +331,11 @@
     </equation*>
   </theorem>
 
-  \;
+  <\bibliography|bib|tm-plain|robot>
+    <\bib-list|1>
+      <bibitem*|1><label|bib-strang_linear_nodate>Gilbert Strang. <newblock>Linear Algebra and Its Applications.<newblock>
+    </bib-list>
+  </bibliography>
 </body>
 
 <\initial>
@@ -330,19 +350,23 @@
   <\collection>
     <associate|auto-1|<tuple|1|1>>
     <associate|auto-2|<tuple|1|2>>
-    <associate|auto-3|<tuple|2|2>>
-    <associate|auto-4|<tuple|2|2>>
-    <associate|auto-5|<tuple|3|3>>
+    <associate|auto-3|<tuple|2|3>>
+    <associate|auto-4|<tuple|2|3>>
+    <associate|auto-5|<tuple|3|4>>
     <associate|auto-6|<tuple|4|4>>
     <associate|auto-7|<tuple|3|4>>
-    <associate|eq:def-of-exp|<tuple|1|5>>
-    <associate|footnote-1|<tuple|1|?>>
-    <associate|footnr-1|<tuple|1|?>>
+    <associate|auto-8|<tuple|2|6>>
+    <associate|bib-strang_linear_nodate|<tuple|1|6>>
+    <associate|eq:def-of-exp|<tuple|2|6>>
+    <associate|eq:det-def-consistency|<tuple|1|1>>
   </collection>
 </references>
 
 <\auxiliary>
   <\collection>
+    <\associate|bib>
+      strang_linear_nodate
+    </associate>
     <\associate|figure>
       <tuple|normal|<surround|<hidden-binding|<tuple|auto-2>|1>||Determinant follow right-hand law.>|<pageref|auto-2>>
 
@@ -358,6 +382,8 @@
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|3<space|2spc>The trace of a matrix><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-5><vspace|0.5fn>
 
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|4<space|2spc>Lie group and Lie algebra><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-6><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|Bibliography><datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.05fn>.<space|0.05fn>>>>>|<htab|5mm>><no-break><pageref|auto-8><vspace|0.5fn>
     </associate>
   </collection>
 </auxiliary>

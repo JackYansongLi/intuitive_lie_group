@@ -34,10 +34,16 @@
   <section|The geometric interpretation of the determinant>
 
   <\definition>
-    <dueto|Determinant>The determinant of a real-valued square matrix <math|A> is defined as the area of the parallelogram spanned by the column vectors of <math|A>.
+    <dueto|Determinant>The determinant of a <math|2\<times\>2> real-valued square matrix <math|A> is defined as the area of the parallelogram spanned by the column vectors of <math|A>.
   </definition>
 
-  <unfolded-comment|+oaA7tdA2B5cNQyP|+oaA7tdA2B5cNQyQ|comment|Jack Yansong Li|1768567299||Missing part: How to calculate determinant of a square matrix! Refer to any book about linear algebra <cite|strang_linear_nodate>>
+  The more commonly used definition in textbooks is the next one.
+
+  <\definition>
+    <with|font-series|bold|(Determinant)> The determinant of a <math|2\<times\>2> real-valued square matrix <math|A=<around*|(|<tabular*|<tformat|<table|<row|<cell|a>>|<row|<cell|c>>>>><tabular*|<tformat|<table|<row|<cell|b>>|<row|<cell|d>>>>>|)>> \ equals to <math|a d-c b>.
+  </definition>
+
+  Then we will prove that these two definitions are equivalent.
 
   <\proposition>
     For a 2\<times\>2 matrix <math|A\<triangleq\><around*|[|<math-bf|v><rsub|1>\|<math-bf|v><rsub|2>|]>>, the following equality holds
@@ -49,22 +55,8 @@
     where the right hand side of <smart-ref|eq:det-def-consistency> is the standard definition of area from Euclidean geometry.
   </proposition>
 
-  Our proof is based on the two-dimensional case,but the proof generalizes to higher dimensions, where the determinant corresponds to the signed volume of the parallelepiped spanned by the column vectors.\ 
-
   <\proof>
-    Let <math|A> be a 2\<times\>2 matrix
-
-    <\equation*>
-      A=<matrix|<tformat|<table|<row|<cell|a>|<cell|c>>|<row|<cell|b>|<cell|d>>>>>
-    </equation*>
-
-    with column vectors be
-
-    <\equation*>
-      <math-bf|v><rsub|1>=<matrix|<tformat|<table|<row|<cell|a>>|<row|<cell|b>>>>><space|1em>and<space|1em><math-bf|v><rsub|2>=<matrix|<tformat|<table|<row|<cell|c>>|<row|<cell|d>>>>>.
-    </equation*>
-
-    Recall from linear algebra, <math|det <around|(|A|)>=a*d-b*c>. The vectors <math|<math-bf|v><rsub|1>> and <math|<math-bf|v><rsub|2>> can be considerd as transformed vectors transformed from standard basis vectors <math|<math-bf|e><rsub|1>=<around|(|1,0|)>> and <math|<math-bf|e><rsub|2>=<around|(|0,1|)>> under the linear transformation represented by <math|A>, i.e.,
+    The vectors <math|<math-bf|v><rsub|1>> and <math|<math-bf|v><rsub|2>> can be considerd as transformed vectors transformed from standard basis vectors <math|<math-bf|e><rsub|1>=<around|(|1,0|)>> and <math|<math-bf|e><rsub|2>=<around|(|0,1|)>> under the linear transformation represented by <math|A>, i.e.,
 
     <\equation*>
       A<math-bf|e><rsub|1>=<math-bf|v><rsub|1>,<space|1em>A<math-bf|e><rsub|2>=<math-bf|v><rsub|2>.
@@ -79,21 +71,11 @@
     where <math|\<theta\>> is the angle between <math|<math-bf|v><rsub|1>> and <math|<math-bf|v><rsub|2>>. Therefore, by the definition of cross product, we have
 
     <\equation*>
-      <around|\||det <around|(|A|)>|\|>=<around|\||a*d-b*c|\|>=<around|\<\|\|\>|<math-bf|v><rsub|1>\<times\><math-bf|v><rsub|2>|\<\|\|\>>=<around|\<\|\|\>|<math-bf|v><rsub|1>|\<\|\|\>><around|\<\|\|\>|<math-bf|v><rsub|2>|\<\|\|\>><around|\||sin \<theta\>|\|>.
+      <around|\||det <around|(|A|)>|\|>=<around|\<\|\|\>|<math-bf|v><rsub|1>|\<\|\|\>><around|\<\|\|\>|<math-bf|v><rsub|2>|\<\|\|\>><around|\||sin \<theta\>|\|>=<around|\<\|\|\>|<math-bf|v><rsub|1>\<times\><math-bf|v><rsub|2>|\<\|\|\>>.
     </equation*>
   </proof>
 
-  \;
-
-  Given a <math|n\<times\>n> matrix <math|A>, the determinant can be considered as:
-
-  <\itemize>
-    <item>volume of the parallelepiped spanned by transformed (from standard basis vectors) vectors under transformation <math|A>.
-
-    <item>scaling factor of the volumn of the closed region spanned by the standard basis vectors under transformation <math|A>.
-  </itemize>
-
-  The property <math|det <around|(|A*B|)>=det <around|(|A|)>*det <around|(|B|)>> follows directly from the above two viewpoint of determinant.
+  Our proof is based on the two-dimensional case,but the proof generalizes to higher dimensions, where the determinant corresponds to the signed volume of the parallelepiped spanned by the column vectors.\ 
 
   <\example>
     <math|A=I=<matrix|<tformat|<table|<row|<cell|1>|<cell|0>>|<row|<cell|0>|<cell|1>>>>>>. <math|det<around*|(|A|)>=1>.
@@ -109,10 +91,8 @@
 
   <section|The vector field view of a matrix>
 
-  <folded-comment|+1qB1e5Qj486wk0J|+1qB1e5Qj486wk0K|comment|gao|1768280080||Personally, I prefer the second definition because it is easier to understand. However, I've retained the teacher's version.>
-
   <\definition>
-    A vector field of <math|V> is a mapping from <math|V> to <math|V>. A vector field is a function that assigns a vector to each point in a subset of space.\ 
+    <with|font-series|bold|(Vector field) >A vector field of <math|V> is a mapping from <math|V> to <math|V> which is a function that assigns a vector to each point in a subset of space.\ 
   </definition>
 
   Intuitively, a vector field attaches a vector to each point in space.
@@ -127,10 +107,8 @@
     A square matrix <math|A\<in\>\<bbb-R\><rsup|n\<times\>n>> can be considered as a vector field by assigning to every point <with|font-series|bold|v> the vector <with|font-shape|italic|A><with|font-series|bold|v> via matrix multiplication! <math|A> is also called <with|font-shape|italic|linear vector field>.
   </example>
 
-  <folded-comment|+2NRENTXD1186G82m|+2NRENTXD1186G82n|comment|gao|1768464198||I'm not sure if "volume" is accurate here.>
-
   <\definition>
-    The divergence of a vector field <math|A> is defined as\ 
+    <with|font-series|bold|(Divergence)> The divergence of a vector field <math|A> is defined as
 
     <\equation*>
       div <around*|(|A;volume|)>=lim<rsub|volume\<rightarrow\>0><frac|<text|rate of volume change> |volume>
@@ -139,18 +117,20 @@
     which can be used to characterize the degree to which a vector field diverges at each point in space.
   </definition>
 
+  <folded-comment|+2DCVyQia1A6CiC1b|+2DCVyQia1A6CiC1c|comment|gao|1768616389||论文里好像一般是向量加粗正体？等着再确认一下>
+
   <\theorem>
-    <with|text-bg-color|#ffe47f|Let v(x)=Ax be a linear vector field> in <math|\<bbb-R\><rsup|3>>, where A is a constant 3\<times\>3 matrix. Then the divergence of the vector field is constant everywhere, independent of the position x.
+    Let <math|>3\<times\>3 matrix A be a linear vector field in <math|\<bbb-R\><rsup|3>>, the divergence of the vector field is constant everywhere, independent of the position <with|font-series|bold|x> <with|font-series|bold|>.
   </theorem>
 
   <\proof>
-    Given <math|x\<in\>\<bbb-R\><rsup|3>>, consider the neighbourhood <math|B<rsub|d><around*|(|x|)>> of <math|x> defined as
+    Given <math|<with|font-series|bold|x>\<in\>\<bbb-R\><rsup|3>>, consider the neighbourhood <math|B<rsub|d><around*|(|<with|font-series|bold|x>|)>> of <math|x> defined as
 
     <\equation*>
-      B<rsub|\<rho\>><around*|(|x|)>\<triangleq\><around*|{|x<rprime|'>\|<around*|\<\|\|\>|x<rprime|'>-x|\<\|\|\>>\<leq\>\<rho\>|}>,
+      B<rsub|\<rho\>><around*|(|<with|font-series|bold|x>|)>\<triangleq\><around*|{|<with|font-series|bold|x<rprime|'>>\|<around*|\<\|\|\>|<with|font-series|bold|x<rprime|'>>-<with|font-series|bold|x>|\<\|\|\>>\<leq\>\<rho\>|}>,
     </equation*>
 
-    where <math|\<rho\>\<geq\>0> is the radius. The velocity of <math|x> under vector field <math|A> is <math|v<around*|(|x|)>=A x>. Consider a boundary point <math|x+\<rho\> e>, where <math|<around*|\<\|\|\>|e|\<\|\|\>>=1>. The velocity of <math|><math|x+\<rho\> e> is given by
+    where <math|\<rho\>\<geq\>0> is the radius. The velocity of <math|<with|font-series|bold|x>> under vector field <math|A> is <math|v<around*|(|<with|font-series|bold|x>|)>=A <with|font-series|bold|x>>. Consider a boundary point <math|<with|font-series|bold|x>+\<rho\><with|font-series|bold| e>>, where <math|<around*|\<\|\|\>|<with|font-series|bold|e>|\<\|\|\>>=1>. The velocity of <math|><math|x+\<rho\> e> is given by
 
     <\equation*>
       v<around*|(|x+\<rho\> e|)>=A x+\<rho\>A e.
@@ -168,35 +148,23 @@
       x+\<rho\> e\<mapsto\>x+\<rho\> e+\<varepsilon\><around*|(|A x+\<rho\>A e|)>.
     </equation*>
 
-    Therefore, the new distance between the selected boundary point to the center is
+    Therefore, the relative displacement between the selected boundary point to the center is
 
     <\equation*>
-      \<rho\> e+\<varepsilon\>\<rho\>A e
+      \<rho\> e+\<varepsilon\>\<rho\>A e,
     </equation*>
 
-    <unfolded-comment|+oaA7tdA2B5cNQyR|+oaA7tdA2B5cNQyS|comment|Jack Yansong Li|1768569731||Finish it>
+    which is independent of <with|font-series|bold|x>.
+
+    \;
   </proof>
-
-  <\unfolded-comment|+1oYzmf2wz7E6F6d|+1oYzmf2wz7E6F6e|comment|Jack Yansong Li|1768221281|>
-    <\proof>
-      Consider the area spanned by eigenvectors. Consider a very small amont of time <math|\<varepsilon\>>. The length of a eigenvector is <math|1>, after time <math|\<varepsilon\>>, the length is <math|1+\<varepsilon\>\<lambda\>>. The area after time <math|\<varepsilon\>> is\ 
-
-      <\equation*>
-        div<around*|(|A|)>=<frac|det<matrix|<tformat|<table|<row|<cell|1+\<varepsilon\>\<lambda\><rsub|1>>|<cell|0>>|<row|<cell|0>|<cell|1+\<varepsilon\>\<lambda\><rsub|2>>>>>>|1>=1+\<varepsilon\><around*|(|\<lambda\><rsub|1>+\<lambda\><rsub|2>|)>+<text|h.o.t>
-      </equation*>
-
-      \;
-    </proof>
-  </unfolded-comment>
 
   \;
 
   <section|The trace of a matrix>
 
-  <folded-comment|+1fGcKRm82VaGqWYA|+1fGcKRm82VaGqWYB|comment|gao|1768355203||I'm not sure whether I should use "proposition" or "theorem" here.>
-
   <\definition>
-    The trace <math|tr<around*|(|A|)>> of a matrix <math|A> is given by\ 
+    <with|font-series|bold|(Trace)> The trace <math|tr<around*|(|A|)>> of a matrix <math|A> is given by\ 
 
     <\equation*>
       tr<around*|(|A|)>=div<around*|(|\<cal-A\>|)>,
@@ -205,21 +173,35 @@
     where <math|\<cal-A\>> is the corresponding linear transformation of <math|A>.
   </definition>
 
-  <\theorem>
-    \;
+  <\definition>
+    <with|font-series|bold|(Trace)> The trace <math|tr<around*|(|A|)>> of a matrix <math|A> is given by
 
     <\equation*>
       tr<around*|(|A|)>=<big|sum><rsub|i>A<rsub|i i>,
     </equation*>
 
-    where <math|A<rsub|i i>> is the ..
+    where <math|A<rsub|i i>> is the element in the i-th row and j-th column of <with|font-shape|italic|A>.
+  </definition>
+
+  <\theorem>
+    <\equation*>
+      div<around*|(|\<cal-A\>|)>=<big|sum><rsub|i>A<rsub|i i>.
+    </equation*>
   </theorem>
 
   <\proof>
-    Consider the volume spanned by unit eigenvectors. Consider a very small amount of time <math|\<varepsilon\>> . The length of a eigenvector is 1,after time <math|\<varepsilon\>> ,the length is <math|1+\<varepsilon\>*\<lambda\>> . The area after time <math|\<varepsilon\>> is\ 
+    For a <math|3\<times\>3> matrix <with|font-shape|italic|A> with eigenvalues <math|\<lambda\> <rsub|1>,\<lambda\> <rsub|2>,\<lambda\> <rsub|3> >(counted with multiplicity), the characteristic polynomial is
 
     <\equation*>
-      <math-up|div><around*|(|A|)>=<frac|det <around*|(|<tabular*|<tformat|<table|<row|<cell|1+\<varepsilon\>*\<lambda\><rsub|1>>|<cell|0>>|<row|<cell|0>|<cell|1+\<varepsilon\>*\<lambda\><rsub|2>>>>>>|)>|1>=1+\<varepsilon\>*<around*|(|\<lambda\><rsub|1>+\<lambda\><rsub|2>|)>+<text|h.o.t >
+      p<around*|(|\<lambda\>|)>=det<around*|(|\<lambda\> I-A|)>.
+    </equation*>
+
+    Expanding <math|det <around|(|\<lambda\>*I-A|)>>, the coefficient of <math|\<lambda\><rsup|2>> comes only from<math|<around|(|\<lambda\>-a<rsub|11>|)><around*|(|\<lambda\>-a<rsub|22>|)><around|(|\<lambda\>-a<rsub|33>|)>>, therefore, the coefficient is <math|-<big|sum>a<rsub|i*i>=-<math-up|tr><around|(|A|)>>.Since <math|p<around|(|\<lambda\>|)>=<around|(|\<lambda\>-\<lambda\><rsub|1>|)>*\<cdots\>*<around|(|\<lambda\>-\<lambda\><rsub|n>|)>>, the same coefficient is <math|-<big|sum>\<lambda\><rsub|i>>. So tr(<with|font-shape|italic|A>)= <math|\<lambda\><rsub|1>+\<lambda\><rsub|2>+\<lambda\><rsub|3>>.
+
+    Consider the volume spanned by unit eigenvectors. Consider a very small amount of time <math|\<varepsilon\>> . The length of a eigenvector is 1, after time <math|\<varepsilon\>> , the length is <math|1+\<varepsilon\>\<lambda\><rsub|i>> . The area after time <math|\<varepsilon\>> is\ 
+
+    <\equation*>
+      <math-up|div><around*|(|A|)>=lim<rsub|\<varepsilon\>\<rightarrow\>0><frac|det <around*|(|<tabular*|<tformat|<table|<row|<cell|1+\<varepsilon\>\<lambda\><rsub|1>>|<cell|0>>|<row|<cell|0>|<cell|1+\<varepsilon\>\<lambda\><rsub|2>>>|<row|<cell|0>|<cell|0>>>>><tabular*|<tformat|<table|<row|<cell|0>>|<row|<cell|0>>|<row|<cell|1+\<varepsilon\>\<lambda\><rsub|3> >>>>>|)>-1|\<varepsilon\>>=\<lambda\><rsub|1>+\<lambda\><rsub|2>+\<lambda\><rsub|3>=tr<around*|(|<with|font-shape|italic|A>|)>.
     </equation*>
   </proof>
 
@@ -349,16 +331,33 @@
 <\references>
   <\collection>
     <associate|auto-1|<tuple|1|1>>
+    <associate|auto-10|<tuple|2|?>>
+    <associate|auto-11|<tuple|2|?>>
+    <associate|auto-12|<tuple|2|?>>
+    <associate|auto-13|<tuple|2|?>>
+    <associate|auto-14|<tuple|2|?>>
+    <associate|auto-15|<tuple|4|?>>
+    <associate|auto-16|<tuple|3|?>>
+    <associate|auto-17|<tuple|2|?>>
     <associate|auto-2|<tuple|1|2>>
-    <associate|auto-3|<tuple|2|3>>
+    <associate|auto-3|<tuple|2|2>>
     <associate|auto-4|<tuple|2|3>>
     <associate|auto-5|<tuple|3|4>>
     <associate|auto-6|<tuple|4|4>>
     <associate|auto-7|<tuple|3|4>>
     <associate|auto-8|<tuple|2|6>>
+    <associate|auto-9|<tuple|2|?>>
     <associate|bib-strang_linear_nodate|<tuple|1|6>>
+    <associate|conclusion|<tuple|2|?>>
     <associate|eq:def-of-exp|<tuple|2|6>>
     <associate|eq:det-def-consistency|<tuple|1|1>>
+    <associate|proof-trace-of-a-matrix-equals-sum-of-its-eigenvalues|<tuple|2|?>>
+    <associate|proof-via-characteristic-polynomial|<tuple|2|?>>
+    <associate|statement|<tuple|2|?>>
+    <associate|step-1-characteristic-polynomial|<tuple|2|?>>
+    <associate|step-2-expansion-of-the-determinant|<tuple|2|?>>
+    <associate|step-3-factorization-via-eigenvalues|<tuple|2|?>>
+    <associate|step-4-equality-of-coefficients|<tuple|2|?>>
   </collection>
 </references>
 
